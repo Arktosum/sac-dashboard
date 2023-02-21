@@ -1,11 +1,17 @@
-let express=require('express');
-let app=express();
-app.listen(3000, () => {
-    console.log("Application started and Listening on port 3000");
-  });
-app.use(express.static("public\home\index.html"));
-app.get("/index",function(req,res){
-    res.send("index");
-});
+const express = require('express')
+const cors = require('cors')
 
 
+const app = express()
+
+app.use(cors())
+app.use(express.json())
+
+const PORT = 3000
+
+app.post('/api/add',(req, res) => {
+    console.log(req.body);
+})
+app.listen(PORT,()=>{
+    console.log(`Started server on | http://localhost:${PORT}`)
+})
